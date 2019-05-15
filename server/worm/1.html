@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+        <div  style="align-content: center;">
+                <div class="goto">
+                    <input type="text" v-model="gotoPage" />
+                    <span  v-on:click="gotoNextPage" class="pager-btn">跳转</span>
+                </div>
+              </div>
+
+    <script>
+    var str ='(第1/6页)当前30条/页';
+        str = str.match(/\(.*?\)/g)[0];// (第1/6页)
+        str = str.replace(/\(|第|\)|页/g,'');
+        str = str.split('/');
+// console.log(str.replace(/\[|]/g,''));//移除字符串中的所有[]括号（不包括其内容）
+// console.log(str.replace(/\[.*?\]/g,''));//移除字符串中的所有[]括号（包括其内容）
+// replace(/[-\(*(特P|P|不低于|控|控价|实拍|货已出|现货|数据好)[0-9]*\)\]】）]*/g,"")
+
+    console.log('str',str);
+    
+    </script>
+</body>
+</html>

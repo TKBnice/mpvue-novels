@@ -1,0 +1,14 @@
+{
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "搜索",
+    "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+      "i-button": "../../../static/iviewui/button/index",
+      "i-input" :"../../../static/iviewui/input/index",
+      "i-icon": "../../../static/iviewui/icon/index",
+      "i-page": "../../../static/iviewui/page/index"
+  }
+}

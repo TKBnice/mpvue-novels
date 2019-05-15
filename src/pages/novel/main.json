@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+      "i-button": "../../../static/iviewui/button/index",
+      "i-icon": "../../../static/iviewui/icon/index",
+      "i-spin": "../../../static/iviewui/spin/index"
+  }
+}

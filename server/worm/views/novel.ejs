@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>小说</title>
+    <style>
+        body, textarea, input, button, select, keygen, legend {
+            font: 400 14px/1.5 Arial, "Segoe UI", "Lucida Grande", Helvetica, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", FontVsoicon, sans-serif;
+            color: #333;
+            outline: 0;
+        }
+        ul,li{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            color: #00B7FF;
+            cursor: pointer;
+        }
+
+        .container {
+            position: relative;
+            width: 1100px;
+            overflow: hidden;
+            zoom: 1;
+        }
+
+        .jobs {
+            margin: 30px;
+            float: left;
+        }
+
+        .jobs span {
+            color: green;
+            font-weight: bold;
+        }
+
+        .btn {
+            cursor: pointer;
+        }
+
+        .fetching {
+            display: none;
+            color: red;
+        }
+
+        .footer {
+            clear: both;
+        }
+        .fl {
+            float: left;
+        }
+        .searchbox {
+            width: 500px;
+            margin: 0 auto;
+            
+        }
+        .searchbox .dropmenu {
+            position: relative;
+            float: left;
+            width: 63px;
+            height: 38px;
+            border: 2px solid #2db8ad;
+            border-right: none;
+        }
+        .searchbox .tri {
+            position: absolute;
+            height: 0;
+            width: 0;
+            line-height: 0;
+            font-size: 0;
+            top: 17px;
+            right: 8px;
+            border: 3px dashed transparent;
+            border-top: 3px solid #666;
+            z-index: 10;
+        }
+        .searchbox .dropmenu-item li{
+            padding: 3px 20px 3px 14px;
+            line-height: 32px;
+            font-size: 14px;
+            width: 28px;
+            color: #666;
+            cursor: pointer;
+        }
+        .searchbox .text {
+            padding: 6px 5px;
+            border: 2px solid #2db8ad;
+            border-right: none;
+            border-left: none;
+            border-radius: 0;
+            width: 338px;
+            height: 26px;
+            line-height: 26px;
+        }
+        .searchbox .searchbtn {
+            float: left;
+            width: 65px;
+            margin: 0;
+            height: 42px;
+            line-height: 42px;
+            border: none;
+            color: #fff;
+            background: #1abc9c;
+            cursor: pointer;
+            -webkit-appearance: none;
+            border-radius: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h3 style="text-align: center;">【nodejs爬虫】 小说网站</h3>
+    <p style="text-align: center;">初始化完成 ...</p>
+    <div style="width:100%;margin-top: 20px;overflow: hidden;">
+        <div class="searchbox " style="text-align: center;overflow: hidden;">
+            <div class="dropmenu fl">
+                <span class="tri"></span>
+                <ul class="dropmenu-item">
+                    <li data-type="novelname">书名</li>
+                    <!-- <li data-type="author">作者</li> -->
+                </ul>
+            </div>
+            <label class="fl"><input id="searchkey" type="text" name="searchkey" id="" class="text"></label>
+            <input type="submit" value="搜索" id="searchbtn" class="searchbtn fl" >
+        </div>
+    </div>
+
+    <div class="container">
+        <!--<div class="jobs"> </div>-->
+    </div>
+    <div class="footer">
+        <p class="fetching">数据抓取中 ... 请稍后</p>
+    </div>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        function getData(str) { //获取到的数据有杂乱..需要把前面部分去掉,只需要data（<em>......<em>  data)
+            if (str) {
+                return str.slice(str.lastIndexOf(">") + 1);
+            }
+        }
+        
+        $("#searchbtn").click(function(){
+            var searchkey = $('#searchkey').val();
+            $.ajax({   //开始发送ajax请求至路径 /getJobs  进而作页面抓取处理
+                data:{searchkey},  //参数 page = _page
+                dataType: "json",
+                type: "get",
+                url: "/novelList",
+                success: function(data){   //收到返回的json数据
+                    console.log(data);
+                    var html = "";
+                    $(".container").empty();
+
+                },
+                error: function(){ 
+                    console.log("Error1: 未找到数据..");
+                }
+            });
+        })
+
+
+    </script>
+</body>
+
+</html>
